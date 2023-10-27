@@ -7,6 +7,10 @@ export class StudentService {
 
   constructor() { }
 
+  getTitle() {
+    return "Dependency Injection in angular";
+  }
+
   getStudents() : any[] {
     return [
       {

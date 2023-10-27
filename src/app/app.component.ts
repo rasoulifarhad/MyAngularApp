@@ -124,11 +124,13 @@ export class AppComponent {
   }
 
     students : any[] = [];
+    pageTitle : string = "";
 
     ngOnInit(): void {
       //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
       //Add 'implements OnInit' to the class.
       this.students = this._studentService.getStudents();
+      this.pageTitle = this._studentService.getTitle();
     }
 
 }
