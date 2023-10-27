@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { StudentService } from './student.service';
 @Component({
   selector: 'app-root',
   styleUrls: ['./app.component.css'],
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
   // template: `<div>
   //               <h1>{{'FirstName:' + firstName + ', LastName: ' + lastName}}</h1>
   //               <br/>
@@ -28,10 +28,13 @@ import { Router } from '@angular/router';
   //               <div  [innerHtml]='maliciousData'></div>
   //               <input id='inputId' type='text' value='TestInput'>
   //           </div>`
+  providers:[StudentService]
 })
-export class AppComponent { 
+export class AppComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private _studentService: StudentService) {
+    // this.students = _studentService.getStudents();
+  }
 
   getStudent() {
     this.router.navigate(['/studentLink']);
@@ -119,6 +122,15 @@ export class AppComponent {
   changeData(valid: boolean) {
     this.isValid = valid;
   }
+
+    students : any[] = [];
+
+    ngOnInit(): void {
+      //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+      //Add 'implements OnInit' to the class.
+      this.students = this._studentService.getStudents();
+    }
+
 }
 
 
