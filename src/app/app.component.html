@@ -1,0 +1,249 @@
+<div>
+  <h1>{{'FirstName:' + firstName + ', LastName: ' + lastName}}</h1>
+  <br/>
+  <h2>{{getFullName()}}</h2>
+  <br/>
+  <img src={{imagePath}}/>
+  <br/>
+  <span [innerHtml]='title'></span>
+  <br/>
+  <img [src]='imagePath'/>
+  <br/>
+  <img src='https://dotnettutorials.net{{imageUriPath}}'/>
+  <br/>
+  <br/>
+  <button [disabled]='isDisabledClick'> Click Here </button>
+  <br/>
+  <button disabled={{isDisabledClick}}> Click Here </button>
+  <br/>
+  {{maliciousData}}
+  <br/>
+  <div  [innerHtml]='maliciousData'></div>
+  <input id='inputId' type='text' value='TestInput'>
+</div>
+<br/>
+<table>
+  <thead>
+    <tr>
+      <!-- <th colspan={{columnSpan}}>
+      <th colspan={{columnSpan}}> -->
+      <!-- <th [attr.colspan]="columnSpan"> -->
+      <th attr.colspan={{columnSpan}}>
+
+          {{pageHeader}}
+      </th>
+    </tr>
+  </thead>
+	<tr>
+		<td>Name</td>
+		<td>{{name}}</td>
+	</tr>
+	<tr>
+		<td>branch</td>
+		<td>{{branch}}</td>
+	</tr>
+	<tr>
+		<td>Mobile</td>
+		<td>{{mobile}}</td>
+	</tr>
+	<tr>
+		<td>Gender</td>
+		<td>{{gender}}</td>
+	</tr>
+	<tr>
+		<td>Age</td>
+		<td>{{age}}</td>
+	</tr>
+
+</table>
+
+<br/>
+
+<div>
+  <button class="colorClass">Click me</button>
+</div>
+
+<br/>
+
+<div>
+  <button [class]='classesToApply'>Click me</button>
+</div>
+
+<br/>
+
+<div>
+  <button class="colorClass" [class]='classesToApply'>Click me</button>
+</div>
+
+<br/>
+
+<div>
+  <button class="colorClass" [class.boldClass]='!applyBoldClass'>Click me</button>
+</div>
+
+<br/>
+
+<div>
+  <button class="colorClass italicClass boldClass" [class.boldClass]='applyBoldClass'>Click me</button>
+</div>
+
+<br/>
+
+<div>
+  <button class="colorClass" [ngClass]='addCssClasses()'>Click me</button>
+</div>
+
+<br/>
+
+<div>
+  <button style="color: red;">Click me</button>
+</div>
+
+<br/>
+
+<div>
+  <button style="color: red;"  [style.font-weight]="isBold ? 'bold' : 'normal'">Click me</button>
+</div>
+
+<br/>
+
+<div>
+  <button style="color: red;"  [style.fontWeight]="isBold ? 'bold' : 'normal'">Click me</button>
+</div>
+
+<br/>
+
+<div>
+  <button style="color: red;"  [style.font-size.px]="fontSize">Click me</button>
+</div>
+
+<br/>
+
+<div>
+  <button style="color: red;"  [ngStyle]="addCssStyles()">Click me</button>
+</div>
+
+<br/>
+
+<div>
+  <button (click)="onClick()">Click me</button>
+</div>
+
+<br/>
+
+<div>
+  <button on-click="onClick()">Click me</button>
+</div>
+
+<br/>
+
+<table>
+  <thead>
+    <tr>
+      <th attr.colspan={{columnSpan}}>
+          {{pageHeader}}
+      </th>
+    </tr>
+  </thead>
+	<tr>
+		<td>FirstName</td>
+		<td>{{firstName}}</td>
+	</tr>
+	<tr>
+		<td>LastName</td>
+		<td>{{lastName}}</td>
+	</tr>
+	<tr *ngIf='showDetails'>
+		<td>branch</td>
+		<td>{{branch}}</td>
+	</tr>
+	<tr *ngIf='showDetails'>
+		<td>Mobile</td>
+		<td>{{mobile}}</td>
+	</tr>
+	<tr *ngIf='showDetails'>
+		<td>Gender</td>
+		<td>{{gender}}</td>
+	</tr>
+	<tr *ngIf='showDetails'>
+		<td>Age</td>
+		<td>{{age}}</td>
+	</tr>
+
+</table>
+<br/>
+<button (click)='toggleDetails()'>
+  {{showDetails ? 'Hide' : 'Show'}} Details
+</button>
+
+<br/>
+
+<div>
+  Name: <input [value]="name">
+  <br/>
+  You entered: {{name}}
+</div>
+
+<br/>
+
+<div>
+  Name: <input type="text" [value]="name01" (input) = "handleInput($event)">
+  <br/>
+  You entered: {{name01}}
+</div>
+
+<br/>
+
+<div>
+  Name: <input type="text" [value]="name02" (input) = "name02 = $any($event.target).value">
+  <br/>
+  You entered: {{name02}}
+</div>
+
+<br/>
+
+<div>
+  Name: <input type="text" [(ngModel)]="name03">
+  <br/>
+  You entered: {{name03}}
+</div>
+
+<br/>
+<h2>angular routing example</h2>
+<a [routerLink]="['/studentLink']">Student</a> <br/>
+<a [routerLink]="['/studentDetalsLink']">Student details</a> <br/>
+<div>
+  <router-outlet></router-outlet>
+</div>
+
+<br/>
+<h2>angular routing example</h2>
+<button (click)="getStudent()">Student</button> <br/>
+<button (click)="getStudentDetails()">Student details</button> <br/>
+<div>
+  <router-outlet></router-outlet>
+</div>
+
+<br/>
+
+<p>Date Pipe : {{today | date}}</p>
+<p>Full Date : {{today | date:'fullDate'}}</p>
+<p>Mediate Date : {{today | date:'medium'}}</p>
+<p>Short Date : {{today | date:'short'}}</p>
+<p>Date (dd/MM/yyyy) : {{today | date:'dd/MM/yyyy'}}</p>
+<p>Time : {{today | date:'h:mm a z'}}</p>
+<p>Medium Time : {{today | date:'mediumTime'}}</p>
+
+<br/>
+
+<div>
+  <input type="radio" name="rb" (click)="changeData(true)" checked> valid 
+  <input type="radio" name="rb" (click)="changeData(false)" > inValid 
+</div>
+
+<div *ngIf="isValid">
+  <b>The Data is Valid.</b>
+</div>
+<div *ngIf="!isValid">
+  <b>The Data is InValid.</b>
+</div>
